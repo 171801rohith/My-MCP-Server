@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "alembic>=1.16.4",
+    "appopener>=1.7",
     "dotenv>=0.9.9",
     "mcp[cli]>=1.13.0",
     "psycopg2>=2.9.10",

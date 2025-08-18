@@ -1,6 +1,7 @@
 import os
 import shutil
 from send2trash import send2trash
+from AppOpener import open, close
 
 
 def rename_to_episodes(full_path: str) -> str:
@@ -20,7 +21,25 @@ def delete_folder(path: str) -> str:
     shutil.rmtree(path)
     return f"Successfully deleted the folder."
 
+
 def move_folder_trash(path: str) -> str:
     send2trash(path)
     return f"Successfully trashed the folder."
 
+
+def open_app(app_name: str) -> str:
+    try:
+        open(app_name, match_closest=True, throw_error=True)
+        return f"Successfully opened {app_name}."
+    except Exception as e:
+        print("Error:", e)
+        return f"Failed to open {app_name}."
+
+
+def close_app(app_name: str) -> str:
+    try:
+        close(app_name, match_closest=True, throw_error=True)
+        return f"Successfully closed {app_name}."
+    except Exception as e:
+        print("Error:", e)
+        return f"Failed to close {app_name}."

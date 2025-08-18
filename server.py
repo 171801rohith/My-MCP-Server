@@ -4,7 +4,13 @@ from starlette.middleware import Middleware
 
 
 from Tools.notesTool import get_my_notes, add_note
-from Tools.filesModification import rename_to_episodes, delete_folder, move_folder_trash
+from Tools.filesModification import (
+    rename_to_episodes,
+    delete_folder,
+    move_folder_trash,
+    open_app,
+    close_app,
+)
 
 mcp = FastMCP("My-MCP-Server")
 
@@ -45,6 +51,16 @@ mcp.add_tool(
                     Returns:
                     - str: Success or error message based on the outcome.
                 """,
+)
+mcp.add_tool(
+    fn=open_app,
+    name="app_opener",
+    description="""Opens any app in system. Args: app_name""",
+)
+mcp.add_tool(
+    fn=close_app,
+    name="app_closer",
+    description="""Closes any app in system that is open. Args: app_name""",
 )
 
 
