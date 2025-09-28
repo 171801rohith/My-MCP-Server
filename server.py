@@ -11,6 +11,7 @@ from Tools.filesModification import (
     open_app,
     close_app,
 )
+from Tools.google_tools import send_mail
 
 mcp = FastMCP("My-MCP-Server")
 
@@ -61,6 +62,18 @@ mcp.add_tool(
     fn=close_app,
     name="app_closer",
     description="""Closes any app in system that is open. Args: app_name""",
+)
+mcp.add_tool(
+    fn=send_mail,
+    name="mail_sender",
+    description="""
+                Send an email to a recipient. 
+                Inputs required: subject (string), mail_body (string), to (string: recipient email address). 
+                IMPORTANT: Refine and finalize the mail_body BEFORE calling this tool, 
+                because the tool will not improve or rewrite the text — it will just send it as given. 
+                The tool will automatically format the email in HTML and add a disclaimer. 
+                Returns a success or failure message.
+        """,
 )
 
 
